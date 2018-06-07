@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Students } from './class/students';
 
 @Component({
   selector: 'app-root',
@@ -6,16 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  students : any = [
-  	{id:1,name:"Juan Pablo",age:23},
-  	{id:2,name:"Luis Felipe",age:26},
-  	{id:3,name:"Nicolas",age:9},
-  	{id:4,name:"Fernando",age:15},
-  	{id:5,name:"Carlos",age:28},
-  	{id:6,name:"Maria",age:18}
-  ];
-
+  students = Students;
   student:any = {};
   todo : boolean = true;
   addStudent(){
