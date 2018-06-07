@@ -17,22 +17,22 @@ export class AppComponent {
   ];
 
   student:any = {};
-
-
-  validateFieldsRequired(){
-  	if (this.student == {}) {
-  		console.log("Campos vacios");
-  	}
-  }
+  todo : boolean = true;
   addStudent(){
-
-  	//Valido los campos antes de agregar el nuevo estudiante
-  	this.validateFieldsRequired();
-
   	// Agrego student a students
   	this.students.push(this.student);
   	this.student = {};  //Vacio nuevamente el objeto
+  }
 
+  editStudent(Itemstudent){
+  	console.log("Editando...");
+  	this.student = Itemstudent;
+  	this.todo = false;
+  }
+
+  deleteStudent(index:number){
+  	console.log(index);
+  	this.students.splice(index,1);
   }
 
 }

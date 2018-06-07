@@ -7,10 +7,26 @@
     <div class="col-md mt-5">
       <h3>Students List</h3>
       <ul class="list-group">
-        <li class="list-group-item" *ngFor="let student of students">
-          <strong>Id: </strong> {{student.id}} <br>
-          <strong>Name: </strong> {{student.name}} <br>
-          <strong>Age: </strong> {{student.age}}
+        <li class="list-group-item" *ngFor="let student of students; let i = index;">
+          <div class="row">
+            <div class="col-sm-8">
+              <strong>Id: </strong> {{student.id}} <br>
+              <strong>Name: </strong> {{student.name}} <br>
+              <strong>Age: </strong> {{student.age}}
+            </div>
+            <div class="col-sm-4">
+              <div class="d-flex flex-row-reverse">
+                <button class="btn btn-warning btn-xs" (click)="editStudent(student)">
+                  <i class="fa fa-edit"></i>
+                </button>
+                <button class="btn btn-danger btn-xs mr-2" (click)="deleteStudent(i)">
+                  <i class="fa fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          
+
         </li>
       </ul>
     </div>
@@ -32,7 +48,8 @@
           <label>Student Age:</label>
           <input type="number" class="form-control" [(ngModel)]="student.age" placeholder="Student Age:">
         </div>
-        <button class="btn btn-primary mt-2" (click)="addStudent()">Add Student</button>
+        <button class="btn btn-primary mt-2" *ngIf="todo" (click)="addStudent()">Add Student</button>
+        <button class="btn btn-primary mt-2" *ngIf="!todo" (click)="todo = true;student = {};">Edit Student</button>
       </div>
     </div>
   </div>
